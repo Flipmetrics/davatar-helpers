@@ -55,7 +55,7 @@ export default function Davatar({
     eth.lookupAddress(address).then(ensName => {
       if (ensName) {
         eth.getResolver(ensName).then(resolver => {
-          resolver.getText('avatar').then(avatar => {
+          resolver?.getText('avatar').then(avatar => {
             if (avatar && avatar.length > 0) {
               setAvatarUri(avatar);
             }
