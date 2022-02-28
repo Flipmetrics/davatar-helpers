@@ -219,7 +219,8 @@ export default function Avatar({
             const owner = await erc721Contract.ownerOf(tokenId);
 
             if (!owner || owner.toLowerCase() !== normalizedAddress) {
-              throw new Error('ERC721 token not owned by address');
+              setUrl(null);
+              console.log('ERC721 token not owned by address');
             }
           }
 
@@ -240,7 +241,8 @@ export default function Avatar({
           if (address) {
             const balance: BigNumber = await erc1155Contract.balanceOf(address, tokenId);
             if (balance.isZero()) {
-              throw new Error('ERC1155 token not owned by address');
+              setUrl(null);
+              console.log('ERC1155 token not owned by address');
             }
           }
 
